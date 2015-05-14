@@ -1,0 +1,33 @@
+<project name="Buyback API" basedir="." default="help">
+
+    <target name="composer-install" description="Install composer dependencies">
+        <composer command="install"/>
+    </target>
+
+    <target name="help" description="Get help">
+        <exec passthru="true" executable="${project.basedir}/vendor/phing">
+            <arg value="-l"/>
+        </exec>
+    </target>
+
+    <target name="lint">
+        <phplint haltonfailure="true">
+            <fileset dir="${project.basedir}/src/">
+                <include name="**/*.php"/>
+            </fileset>
+            <fileset dir="${project.basedir}/tests/">
+                <include name="**/*.php"/>
+            </fileset>
+        </phplint>
+    </target>
+
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <exec executable="${project.basedir}/vendor/bin/phpunit" checkreturn="true" passthru="true">
+            <arg value="--configuration"/>
+            <arg path="${project.basedir}/phpunit.xml"/>
+        </exec>
+    </target>
+
+    <target name="test" description="Run all tests" depends="composer-install,lint,phpunit"/>
+
+</project>
