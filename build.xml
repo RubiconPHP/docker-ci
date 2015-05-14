@@ -5,7 +5,8 @@
     </target>
 
     <target name="composer-install-no-dev" description="Install composer dependencies">
-        <composer command="install --no-dev -o"/>
+        <exec command="php composer.phar install --no-dev -o" passthru="true" checkreturn="true">
+        </exec>
     </target>
 
     <target name="help" description="Get help">
