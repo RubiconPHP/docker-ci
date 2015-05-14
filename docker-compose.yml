@@ -1,0 +1,7 @@
+# docker base services
+front:
+  image: sonotone/image:0.0.2
+  volumes:
+    - .:/var/www
+  ports:
+    - "8888:80"
