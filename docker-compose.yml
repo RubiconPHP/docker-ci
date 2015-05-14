@@ -2,7 +2,6 @@
 front:
   image: php:5.6-apache
   working_dir: /var/www
-  restart: always
   volumes:
     - .:/var/www
   ports:
