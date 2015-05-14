@@ -4,6 +4,10 @@
         <composer command="install"/>
     </target>
 
+    <target name="composer-install-no-dev" description="Install composer dependencies">
+        <composer command="install --no-dev -o"/>
+    </target>
+
     <target name="help" description="Get help">
         <exec passthru="true" executable="${project.basedir}/vendor/phing">
             <arg value="-l"/>
@@ -28,6 +32,8 @@
         </exec>
     </target>
 
-    <target name="test" description="Run all tests" depends="composer-install,lint,phpunit"/>
+    <target name="prepare" description="Prepare application" depends="lint"/>
+    <target name="test" description="Run all tests" depends="phpunit"/>
+    <target name="package" description="Run all tests" depends="composer-install-no-dev"/>
 
 </project>
