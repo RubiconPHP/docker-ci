@@ -10,5 +10,6 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     {
         $reporter = new Report();
         $this->assertInternalType('string', (string) $reporter);
+        $this->assertSame('1', 1);
     }
 }
